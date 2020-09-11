@@ -7,15 +7,18 @@
     <Company>Blitzkrieg Software</Company>
     <Description>Demo using REDIS in DotNet Core</Description>
     <InformationalVersion>1.1.1</InformationalVersion>
-    <FileVersion>1.1.1</FileVersion>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <FileVersion>1.2.0</FileVersion>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>favicon_32x32_o7Z_icon.ico</PackageIcon>
     <PackageIconUrl />
     <RepositoryType>Git</RepositoryType>
     <RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
     <PackageTags>Blitz.Redis.Demo</PackageTags>
-    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
     <AssemblyName>Blitz.Redis.Demo</AssemblyName>
+    <Version>1.2.0</Version>
+    <PackageProjectUrl>https://github.com/BlitzkriegSoftware/RedisDemo</PackageProjectUrl>
+    <PackageReleaseNotes>A demo of using REDIS w. Docker and the StackExchange library</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +27,10 @@
 
   <ItemGroup>
     <None Remove="redisconfiguration.json" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

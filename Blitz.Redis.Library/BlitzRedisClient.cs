@@ -1,6 +1,7 @@
 ﻿using System;
 using StackExchange.Redis;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 // See: https://stackexchange.github.io/StackExchange.Redis/Basics
 
@@ -15,6 +16,7 @@ namespace Blitz.Redis.Library
 
         private readonly ConnectionMultiplexer redis;
 
+        [ExcludeFromCodeCoverage]
         private BlitzRedisClient() { }
 
         /// <summary>

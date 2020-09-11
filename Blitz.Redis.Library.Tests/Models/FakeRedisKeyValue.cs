@@ -1,5 +1,8 @@
-﻿namespace Blitz.Redis.Demo.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Blitz.Redis.Library.Tests.Models
 {
+    [ExcludeFromCodeCoverage]
     public class FakeRedisKeyValue
     {
         public string Key { get; set; }
