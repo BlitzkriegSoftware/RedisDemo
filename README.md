@@ -24,7 +24,9 @@ Your REDIS instance will have the following connection string:
 127.0.0.1:6379
 ```
 
-## Running the demo
+## Demo: Command Line
+
+> Set the `Blitz.Redis.Demo` as the start up project
 
 ### Usage
 
@@ -79,13 +81,50 @@ info: Blitz.Redis.Demo.Workers.RedisWorker[0]
       8=Potenti odio cum ex tenetur.
 ```
 
-## What is it doing?
+### What is it doing?
 
 1. Does the usual .NET core startup including wiring up logging
 2. Creates an entry for our worker
 3. Parses command line for arguments
 4. Starts the worker with the arguments
 5. Creates `-m` key/value pairs and writes and reads them to REDIS, and for each verifies what we got out is what we put in.
+
+## Demo: Unit Tests
+
+i. Using the visual unit test blade run or debug through the unit tests
+
+ii. See the test code in `Blitz.Redis.Library.Tests` in `TestRedisLibrary.cs`
+
+## Demo: Web
+
+> Set the start up project to `Blitz.Redis.WebDemo`
+
+1. Press **F5** 
+2. Go to the `/swagger` page 
+3. Try the `Stach` and `Fetch` functions
+
+### What is it doing?
+
+a. In `startup.cs` lines 70-74 we 
+
+```cs
+_ = services.AddStackExchangeRedisCache(options => {
+   options.Configuration = "localhost";
+   options.InstanceName = "SampleInstance";
+});
+```
+
+which will use REDIS as an `IDistributedCache` using the default localhost connection string, and an `InstanceName` that in this case is required but meaningless.
+
+b. In `Controllers/ValuesController.cs` in the **CTOR** we inject `IDistributedCache` so we can use it to set and get values
+
+```cs
+// Set a value
+this._cache.SetString(name, value);
+
+// Get a value
+var value = this._cache.GetString(name);
+```
 
 ## Blitz.Redis.Library
 
@@ -96,12 +135,15 @@ This is a quick facade over the exellent StackExchange REDIS client: https://git
 # About 
 
 Stuart Williams
-Cloud/DevOps Practice Lead
- 
-Magenic Technologies Inc.
-Office of the CTO
- 
-* <a href="mailto:stuartw@magenic.com" target="_blank">stuartw@magenic.com</a> (e-mail)
-* Blog: <a href="http://blitzkriegsoftware.net/Blog" target="_blank">http://blitzkriegsoftware.net/Blog</a> 
-* LinkedIn: <a href="http://lnkd.in/P35kVT" target="_blank">http://lnkd.in/P35kVT</a> 
-* YouTube: <a href="https://www.youtube.com/channel/UCO88zFRJMTrAZZbYzhvAlMg" target="_blank">https://www.youtube.com/channel/UCO88zFRJMTrAZZbYzhvAlMg</a> 
+
+* Cloud/DevOps Practice Lead
+
+* Magenic Technologies Inc.
+* Office of the CTO
+
+* [e-mail](stuartw@magenic.com)
+
+* [Blog](https://blitzkriegsoftware.azurewebsites.net/Blog) 
+* [LinkedIn](http://lnkd.in/P35kVT)
+
+* [YouTube](https://www.youtube.com/user/spookdejur1962/videos)
