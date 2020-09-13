@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C20329AB-2A1E-487E-8030-494466DE2CFF}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -19,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1380
 		scripts\docker_redis_stop.sh = scripts\docker_redis_stop.sh
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blitz.Redis.Library.Tests", "Blitz.Redis.Library.Tests\Blitz.Redis.Library.Tests.csproj", "{81A2E57B-A0F0-436F-9AE0-BA46BE70A596}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blitz.Redis.Library.Tests", "Blitz.Redis.Library.Tests\Blitz.Redis.Library.Tests.csproj", "{81A2E57B-A0F0-436F-9AE0-BA46BE70A596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blitz.Redis.WebDemo", "Blitz.Redis.WebDemo\Blitz.Redis.WebDemo.csproj", "{33ADC7E1-8421-47C1-A91C-D5371710E5AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +70,18 @@ Global
 		{81A2E57B-A0F0-436F-9AE0-BA46BE70A596}.Release|x64.Build.0 = Release|Any CPU
 		{81A2E57B-A0F0-436F-9AE0-BA46BE70A596}.Release|x86.ActiveCfg = Release|Any CPU
 		{81A2E57B-A0F0-436F-9AE0-BA46BE70A596}.Release|x86.Build.0 = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|x64.Build.0 = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Debug|x86.Build.0 = Debug|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|x64.ActiveCfg = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|x64.Build.0 = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{33ADC7E1-8421-47C1-A91C-D5371710E5AD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
