@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Blitz.Redis.Library</name>
+    </assembly>
+    <members>
+        <member name="T:Blitz.Redis.Library.BlitzRedisClient">
+            <summary>
+            Client: Blitzkrieg Software Redis
+            </summary>
+        </member>
+        <member name="F:Blitz.Redis.Library.BlitzRedisClient.RedisDefaultDb">
+            <summary>
+            Default: REDIS DB (-1)
+            </summary>
+        </member>
+        <member name="F:Blitz.Redis.Library.BlitzRedisClient.RedisDefaultServer">
+            <summary>
+            Default: REDIS Server (0)
+            </summary>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.#ctor(Blitz.Redis.Library.Models.RedisConfiguration)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="config">RedisConfiguration</param>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Set(System.String,System.String,System.Int32)">
+            <summary>
+            Store a value
+            </summary>
+            <param name="key">key</param>
+            <param name="value">value</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Set``1(System.String,``0,System.Int32)">
+            <summary>
+            Store
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="key">key</param>
+            <param name="thing">of T</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Get(System.String,System.Int32)">
+            <summary>
+            Get
+            </summary>
+            <param name="key">key</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Get``1(System.String,System.Int32)">
+            <summary>
+            Get
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="key">key</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+            <returns>instance of T</returns>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Delete(System.String,System.Int32)">
+            <summary>
+            Delete a key/value, ignores not found
+            </summary>
+            <param name="key">key</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.ClearAll(System.Int32,System.Int32)">
+            <summary>
+            Clear All Keys
+            <para>Warning! Use carefully</para>
+            </summary>
+            <param name="serverIndex">(optional) Server Index, default <c>RedisDefaultServer</c></param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.ClearMatching(System.String,System.Int32)">
+            <summary>
+            Delete keys based on a key regex expression (case sensitive) or you can pass a literal string
+            <para>
+            <list type="bullet">
+            <listheader>
+            <term>Expression</term>
+            <description>Matches</description>
+            </listheader>
+            <item>
+            <term><![CDATA[?]]></term>
+            <description>Matches single character</description>
+            </item>
+            <item>
+            <term><![CDATA[*]]></term>
+            <description>Matches any number of characters (good for begins with or ends with)</description>
+            </item>
+            <item>
+            <term><![CDATA[[{chars}]]]></term>
+            <description>Matches chars in list</description>
+            </item>
+            <item>
+            <term><![CDATA[\]]></term>
+            <description>Escape litteral chars</description>
+            </item>
+            </list>
+            </para>
+            </summary>
+            <param name="keyMatchExpression">Simple RegEx</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+            <returns>Count of deleted keys</returns>
+        </member>
+        <member name="P:Blitz.Redis.Library.BlitzRedisClient.Config">
+            <summary>
+            Redis Configuration
+            </summary>
+        </member>
+        <member name="T:Blitz.Redis.Library.Models.RedisConfiguration">
+            <summary>
+            REDIS Coniguration
+            </summary>
+        </member>
+        <member name="F:Blitz.Redis.Library.Models.RedisConfiguration.RedisLocalHostDefault">
+            <summary>
+            Default: 127.0.0.1:6379
+            </summary>
+        </member>
+        <member name="P:Blitz.Redis.Library.Models.RedisConfiguration.ConnectionString">
+            <summary>
+            Connection String
+            </summary>
+        </member>
+        <member name="P:Blitz.Redis.Library.Models.RedisConfiguration.IsValid">
+            <summary>
+            Is connection configuration valid
+            </summary>
+        </member>
+        <member name="M:Blitz.Redis.Library.Models.RedisConfiguration.SetProperty(System.String,System.String)">
+            <summary>
+            From a config key/value pair set the correct property
+            </summary>
+            <param name="key">(sic)</param>
+            <param name="value">(sic)</param>
+        </member>
+        <member name="M:Blitz.Redis.Library.Models.RedisConfiguration.ToString">
+            <summary>
+            Debug String
+            </summary>
+            <returns>Debug String</returns>
+        </member>
+    </members>
+</doc>

@@ -1,46 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Copyright>Copyright © 2020 Blitzkrieg Software</Copyright>
-    <Company>Blitzkrieg Software</Company>
-    <Description>Demo using REDIS in DotNet Core</Description>
-    <InformationalVersion>1.1.0</InformationalVersion>
-    <FileVersion>1.1.0</FileVersion>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageIcon>favicon_32x32_o7Z_icon.ico</PackageIcon>
-    <PackageIconUrl />
-    <RepositoryType>Git</RepositoryType>
-    <RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
-    <PackageTags>Blitz.Redis.Library</PackageTags>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <AssemblyName>Blitz.Redis.Library</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Copyright>Copyright © 2020-2021 Stuart Williams/Blitzkrieg Software</Copyright>
+		<Company>Blitzkrieg Software</Company>
+		<Description>Demo using REDIS in DotNet Core</Description>
+		<InformationalVersion>1.3.0</InformationalVersion>
+		<FileVersion>1.3.0</FileVersion>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageIcon>favicon_32x32_o7Z_icon.ico</PackageIcon>
+		<PackageIconUrl />
+		<RepositoryType>Git</RepositoryType>
+		<RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
+		<PackageTags>Blitz.Redis.Library</PackageTags>
+		<AssemblyVersion>1.3.0</AssemblyVersion>
+		<AssemblyName>Blitz.Redis.Library</AssemblyName>
+		<Version>1.3.0</Version>
+		<PackageReleaseNotes>1.3.0 - Updated to have clear messages</PackageReleaseNotes>
+		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>.\Blitz.Redis.Library.xml</DocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="3.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="SecurityCodeScan" Version="3.5.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Faker.Data" Version="2.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="StackExchange.Redis" Version="2.2.62" />
+		<PackageReference Include="Vsxmd" Version="1.4.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Update="C:\code\blitz\RabbitMqDemo\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.8" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
-  </ItemGroup>
-  
 </Project>
