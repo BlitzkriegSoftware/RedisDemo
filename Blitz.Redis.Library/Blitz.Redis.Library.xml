@@ -182,7 +182,7 @@
         </member>
         <member name="F:Blitz.Redis.Library.Models.RedisConfiguration.RedisLocalHostDefault">
             <summary>
-            Default: 127.0.0.1:6379
+            Default: 127.0.0.1:6379 (admin)
             </summary>
         </member>
         <member name="P:Blitz.Redis.Library.Models.RedisConfiguration.ConnectionString">

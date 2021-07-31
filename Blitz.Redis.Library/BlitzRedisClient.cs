@@ -99,10 +99,10 @@ namespace Blitz.Redis.Library
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
-        public void Delete(string key, int dbIndex = RedisDefaultDb)
+        public bool Delete(string key, int dbIndex = RedisDefaultDb)
         {
             IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
-            db.KeyDelete(key);
+            return db.KeyDelete(key);
         }
 
         /// <summary>

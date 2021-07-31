@@ -6,9 +6,9 @@
     public class RedisConfiguration
     {
         /// <summary>
-        /// Default: 127.0.0.1:6379
+        /// Default: 127.0.0.1:6379 (admin)
         /// </summary>
-        public const string RedisLocalHostDefault = "127.0.0.1:6379";
+        public const string RedisLocalHostDefault = "127.0.0.1:6379,allowAdmin=true";
 
         /// <summary>
         /// Connection String
