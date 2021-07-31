@@ -2,6 +2,7 @@
 using StackExchange.Redis;
 using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
 
 // See: https://stackexchange.github.io/StackExchange.Redis/Basics
 
@@ -117,6 +118,88 @@ namespace Blitz.Redis.Library
             redisServer.FlushDatabase(dbIndex);
         }
 
+        /// <summary>
+        /// Get all matching keys
+        /// <para>
+        /// <list type="bullet">
+        /// <listheader>
+        /// <term>Expression</term>
+        /// <description>Matches</description>
+        /// </listheader>
+        /// <item>
+        /// <term><![CDATA[?]]></term>
+        /// <description>Matches single character</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[*]]></term>
+        /// <description>Matches any number of characters (good for begins with or ends with)</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[[{chars}]]]></term>
+        /// <description>Matches chars in list</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[\]]></term>
+        /// <description>Escape litteral chars</description>
+        /// </item>
+        /// </list>
+        /// </para>
+        /// </summary>
+        /// <param name="keyMatchExpression">Simple RegEx</param>
+        /// <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        /// <returns>List or empty</returns>
+        public RedisKey[] MatchedKeys(string keyMatchExpression, int dbIndex = RedisDefaultDb)
+        {
+            IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
+            var matches = (RedisKey[])db.Execute("KEYS", keyMatchExpression);
+            return matches;
+        }
+
+        /// <summary>
+        /// Fetch a list of Key/Value Pairs that match
+        /// <para>
+        /// <list type="bullet">
+        /// <listheader>
+        /// <term>Expression</term>
+        /// <description>Matches</description>
+        /// </listheader>
+        /// <item>
+        /// <term><![CDATA[?]]></term>
+        /// <description>Matches single character</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[*]]></term>
+        /// <description>Matches any number of characters (good for begins with or ends with)</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[[{chars}]]]></term>
+        /// <description>Matches chars in list</description>
+        /// </item>
+        /// <item>
+        /// <term><![CDATA[\]]></term>
+        /// <description>Escape litteral chars</description>
+        /// </item>
+        /// </list>
+        /// </para>
+        /// </summary>
+        /// <param name="keyMatchExpression">Simple RegEx</param>
+        /// <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+        /// <returns>Key Value List</returns>
+        public List<KeyValuePair<string,string>> MatchedKeyValues(string keyMatchExpression, int dbIndex = RedisDefaultDb)
+        {
+            var d = new List<KeyValuePair<string, string>>();
+            IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
+            var matches = MatchedKeys(keyMatchExpression, dbIndex);
+            if ((matches != null) && (matches.Length > 0))
+            {
+                foreach(var key in matches)
+                {
+                    var value = db.StringGet(key);
+                    d.Add(new KeyValuePair<string, string>(key, value));
+                }
+            }
+            return d;
+        }
 
         /// <summary>
         /// Delete keys based on a key regex expression (case sensitive) or you can pass a literal string
@@ -151,10 +234,10 @@ namespace Blitz.Redis.Library
         public long ClearMatching(string keyMatchExpression, int dbIndex = RedisDefaultDb)
         {
             long deleted = 0;
-            IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
-            var matches = (RedisKey[])db.Execute("KEYS", keyMatchExpression);
+            var matches = MatchedKeys(keyMatchExpression, dbIndex);
             if ((matches != null) && (matches.Length > 0))
             {
+                IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
                 deleted = db.KeyDelete(matches);
             }
             return deleted;

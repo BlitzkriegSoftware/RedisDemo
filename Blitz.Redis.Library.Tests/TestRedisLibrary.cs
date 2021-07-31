@@ -23,11 +23,13 @@ namespace Blitz.Redis.Library.Tests
 
         private Models.FakeRedisKeyValue MakeKeyValue(int index)
         {
-            return new Models.FakeRedisKeyValue()
+            var model =  new Models.FakeRedisKeyValue()
             {
                 Key = index.ToString(),
                 Value = Faker.Lorem.Sentence()
             };
+            TestRedisLibrary.testContext.WriteLine($"{model}");
+            return model;
         }
 
         #endregion
@@ -56,7 +58,7 @@ namespace Blitz.Redis.Library.Tests
             var cfg = client.Config;
             Assert.IsFalse(string.IsNullOrWhiteSpace(cfg.ConnectionString));
 
-            var m = MakeKeyValue(1);
+            var m = this.MakeKeyValue(1);
 
             client.Set(m.Key, m.Value);
 
@@ -72,7 +74,7 @@ namespace Blitz.Redis.Library.Tests
             var redisConfig = new Blitz.Redis.Library.Models.RedisConfiguration();
             var client = new Blitz.Redis.Library.BlitzRedisClient(redisConfig);
 
-            var m = MakeKeyValue(2);
+            var m = this.MakeKeyValue(2);
 
             client.Set<Models.FakeRedisKeyValue>(m.Key, m);
 

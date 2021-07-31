@@ -45,4 +45,8 @@
     <Folder Include="assets\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Blitz.Redis.Library\Blitz.Redis.Library.csproj" />
+  </ItemGroup>
+
 </Project>

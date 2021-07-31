@@ -74,6 +74,70 @@
             <param name="serverIndex">(optional) Server Index, default <c>RedisDefaultServer</c></param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.MatchedKeys(System.String,System.Int32)">
+            <summary>
+            Get all matching keys
+            <para>
+            <list type="bullet">
+            <listheader>
+            <term>Expression</term>
+            <description>Matches</description>
+            </listheader>
+            <item>
+            <term><![CDATA[?]]></term>
+            <description>Matches single character</description>
+            </item>
+            <item>
+            <term><![CDATA[*]]></term>
+            <description>Matches any number of characters (good for begins with or ends with)</description>
+            </item>
+            <item>
+            <term><![CDATA[[{chars}]]]></term>
+            <description>Matches chars in list</description>
+            </item>
+            <item>
+            <term><![CDATA[\]]></term>
+            <description>Escape litteral chars</description>
+            </item>
+            </list>
+            </para>
+            </summary>
+            <param name="keyMatchExpression">Simple RegEx</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+            <returns>List or empty</returns>
+        </member>
+        <member name="M:Blitz.Redis.Library.BlitzRedisClient.MatchedKeyValues(System.String,System.Int32)">
+            <summary>
+            Fetch a list of Key/Value Pairs that match
+            <para>
+            <list type="bullet">
+            <listheader>
+            <term>Expression</term>
+            <description>Matches</description>
+            </listheader>
+            <item>
+            <term><![CDATA[?]]></term>
+            <description>Matches single character</description>
+            </item>
+            <item>
+            <term><![CDATA[*]]></term>
+            <description>Matches any number of characters (good for begins with or ends with)</description>
+            </item>
+            <item>
+            <term><![CDATA[[{chars}]]]></term>
+            <description>Matches chars in list</description>
+            </item>
+            <item>
+            <term><![CDATA[\]]></term>
+            <description>Escape litteral chars</description>
+            </item>
+            </list>
+            </para>
+            </summary>
+            <param name="keyMatchExpression">Simple RegEx</param>
+            <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
+            <returns>Key Value List</returns>
+        </member>
         <member name="M:Blitz.Redis.Library.BlitzRedisClient.ClearMatching(System.String,System.Int32)">
             <summary>
             Delete keys based on a key regex expression (case sensitive) or you can pass a literal string

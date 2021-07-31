@@ -7,10 +7,8 @@
 		<Description>Demo using REDIS in DotNet Core</Description>
 		<InformationalVersion>1.3.0</InformationalVersion>
 		<FileVersion>1.3.0</FileVersion>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<PackageIcon>favicon_32x32_o7Z_icon.ico</PackageIcon>
 		<PackageIconUrl />
-		<RepositoryType>Git</RepositoryType>
+		<RepositoryType>GIT</RepositoryType>
 		<RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
 		<PackageTags>Blitz.Redis.Library</PackageTags>
 		<AssemblyVersion>1.3.0</AssemblyVersion>
@@ -30,6 +28,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="StackExchange.Redis" Version="2.2.62" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>

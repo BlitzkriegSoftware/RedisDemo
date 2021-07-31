@@ -4,31 +4,69 @@
         <name>Blitz.Redis.WebDemo</name>
     </assembly>
     <members>
-        <member name="T:Blitz.Redis.WebDemo.Controllers.ValuesController">
+        <member name="T:Blitz.Redis.WebDemo.Controllers.LibDemoController">
             <summary>
-            Values Demo (REDIS Cached Values)
+            Demo of <c>Blitz.Redis.Library</c>
             </summary>
         </member>
-        <member name="M:Blitz.Redis.WebDemo.Controllers.ValuesController.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache,Microsoft.Extensions.Logging.ILogger{Blitz.Redis.WebDemo.Controllers.ValuesController})">
+        <member name="M:Blitz.Redis.WebDemo.Controllers.LibDemoController.#ctor(Microsoft.Extensions.Logging.ILogger{Blitz.Redis.WebDemo.Controllers.LibDemoController})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:Blitz.Redis.WebDemo.Controllers.LibDemoController.RedisSet(System.String,System.String)">
+            <summary>
+            Set key value
+            </summary>
+            <param name="key">(sic)</param>
+            <param name="value">(sic)</param>
+        </member>
+        <member name="M:Blitz.Redis.WebDemo.Controllers.LibDemoController.RedisGet(System.String)">
+            <summary>
+            RedisGet
+            </summary>
+            <param name="key">(sic)</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:Blitz.Redis.WebDemo.Controllers.LibDemoController.RedisKvList(System.String)">
+            <summary>
+            Search
+            </summary>
+            <param name="keyMatchExpression">(sic)</param>
+            <returns>value</returns>
+        </member>
+        <member name="T:Blitz.Redis.WebDemo.Controllers.RawController">
+            <summary>
+            Raw Demo (REDIS Cached Values)
+            </summary>
+        </member>
+        <member name="M:Blitz.Redis.WebDemo.Controllers.RawController.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache,Microsoft.Extensions.Logging.ILogger{Blitz.Redis.WebDemo.Controllers.RawController})">
             <summary>
             CTOR
             </summary>
             <param name="cache">IDistributedCache</param>
             <param name="logger">ILogger</param>
         </member>
-        <member name="M:Blitz.Redis.WebDemo.Controllers.ValuesController.Stash(System.String,System.String)">
+        <member name="M:Blitz.Redis.WebDemo.Controllers.RawController.Stash(System.String,System.String)">
             <summary>
             Stash a name, value pair
             </summary>
             <param name="name">(sic)</param>
             <param name="value">(sic)</param>
         </member>
-        <member name="M:Blitz.Redis.WebDemo.Controllers.ValuesController.Fetch(System.String)">
+        <member name="M:Blitz.Redis.WebDemo.Controllers.RawController.Fetch(System.String)">
             <summary>
             Fetch value from cache
             </summary>
             <param name="name">Name</param>
             <returns>Value</returns>
+        </member>
+        <member name="M:Blitz.Redis.WebDemo.Controllers.RawController.Delete(System.String)">
+            <summary>
+            Delete a key
+            </summary>
+            <param name="name">Name</param>
         </member>
         <member name="T:Blitz.Redis.WebDemo.Libs.AssembyInfoHelper">
             <summary>

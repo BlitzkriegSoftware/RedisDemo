@@ -11,23 +11,23 @@ using Microsoft.Extensions.Logging;
 namespace Blitz.Redis.WebDemo.Controllers
 {
     /// <summary>
-    /// Values Demo (REDIS Cached Values)
+    /// Raw Demo (REDIS Cached Values)
     /// </summary>
     [Route("v1/values")]
     [Produces("application/json")]
     [ApiExplorerSettings(GroupName = "v1")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class RawController : ControllerBase
     {
-        private IDistributedCache _cache;
-        private readonly ILogger<ValuesController> _logger;
+        private readonly IDistributedCache _cache;
+        private readonly ILogger<RawController> _logger;
 
         /// <summary>
         /// CTOR
         /// </summary>
         /// <param name="cache">IDistributedCache</param>
         /// <param name="logger">ILogger</param>
-        public ValuesController(IDistributedCache cache, ILogger<ValuesController> logger)
+        public RawController(IDistributedCache cache, ILogger<RawController> logger)
         {
             this._cache = cache;
             this._logger = logger;
@@ -92,5 +92,20 @@ namespace Blitz.Redis.WebDemo.Controllers
             return value;
         }
 
+        /// <summary>
+        /// Delete a key
+        /// </summary>
+        /// <param name="name">Name</param>
+        [HttpDelete("Delete")]
+        [ProducesResponseType(typeof(string), 200)]
+        [ProducesResponseType(typeof(Models.ErrorPayload), 400)]
+        [ProducesResponseType(typeof(Models.ErrorPayload), 404)]
+        public void Delete(string name)
+        {
+            this._cache.Remove(name);
+            var msg = $"Delete({name})";
+            this._logger.LogInformation(msg);
+        }
+        
     }
 }
