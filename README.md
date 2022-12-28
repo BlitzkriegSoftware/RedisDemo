@@ -26,18 +26,18 @@ Your REDIS instance will have the following connection string:
 
 ## Demo: Command Line
 
-> Set the `Blitz.Redis.Demo` as the start up project
+> Set the `BlitzkriegSoftware.Redis.Demo` as the start up project
 
 ### Usage
 
 ```bash
-$ ./Blitz.Redis.Demo.exe -help
+$ ./BlitzkriegSoftware.Redis.Demo.exe -help
 ```
 ```text
-Blitz.Redis.Demo Copyright c 2020 Blitzkrieg Software 1.1.1
+BlitzkriegSoftware.Redis.Demo Copyright c 2020 Blitzkrieg Software 1.1.1
 Demo using REDIS in DotNet Core
  Copyright c 2020 Blitzkrieg Software
-Blitz.Redis.Demo 1.1.1
+BlitzkriegSoftware.Redis.Demo 1.1.1
 Copyright c 2020 Blitzkrieg Software
 
   -v, --verbose             Set output to verbose messages.
@@ -54,30 +54,30 @@ Copyright c 2020 Blitzkrieg Software
 ### Sample
 
 ```bash
-$ ./Blitz.Redis.Demo.exe -m 9 -c "127.0.0.1:6379" -v
+$ ./BlitzkriegSoftware.Redis.Demo.exe -m 9 -c "127.0.0.1:6379" -v
 ```
 ```text
-Blitz.Redis.Demo Copyright c 2020 Blitzkrieg Software 1.1.1
+BlitzkriegSoftware.Redis.Demo Copyright c 2020 Blitzkrieg Software 1.1.1
 Demo using REDIS in DotNet Core
  Copyright c 2020 Blitzkrieg Software
-Blitz.Redis.Demo --ConnectionString 127.0.0.1:6379 --MessageCount 9 --verbose
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+BlitzkriegSoftware.Redis.Demo --ConnectionString 127.0.0.1:6379 --MessageCount 9 --verbose
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       0=Doloribus praesentium quaeratvoluptatem consequatur etiam hac saepeeveniet quidolorem sapien consequat sunt dolore.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       1=Incidunt dictumst assumenda eos sollicitudin accusantiumdoloremque ipsum id diam consequaturquis facilisi harumquidem ornare.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       2=Quisquam etaccusamus egestas conubia illo est est.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       3=Mattis auctor sociosqu.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       4=Cubilia etiam rem mi nonrecusandae eligendi delectus venenatis felis hendrerit massa perferendis.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       5=Eos magnam nemo potenti aliquam mi voluptas consequuntur.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       6=Ac utaut pariatur similique.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       7=Aspernaturaut fuga tempora.
-info: Blitz.Redis.Demo.Workers.RedisWorker[0]
+info: BlitzkriegSoftware.Redis.Demo.Workers.RedisWorker[0]
       8=Potenti odio cum ex tenetur.
 ```
 
@@ -93,11 +93,11 @@ info: Blitz.Redis.Demo.Workers.RedisWorker[0]
 
 i. Using the visual unit test blade run or debug through the unit tests
 
-ii. See the test code in `Blitz.Redis.Library.Tests` in `TestRedisLibrary.cs`
+ii. See the test code in `Tests` in `TestRedisLibrary.cs`
 
 ## Demo: Web
 
-> Set the start up project to `Blitz.Redis.WebDemo`
+> Set the start up project to `BlitzkriegSoftware.Redis.WebDemo`
 
 1. Press **F5** 
 2. Go to the `/swagger` page 
@@ -126,7 +126,7 @@ this._cache.SetString(name, value);
 var value = this._cache.GetString(name);
 ```
 
-## Blitz.Redis.Library
+## BlitzkriegSoftware.Redis.Library
 
 This is a quick facade over the exellent StackExchange REDIS client: https://github.com/StackExchange/StackExchange.Redis/
 

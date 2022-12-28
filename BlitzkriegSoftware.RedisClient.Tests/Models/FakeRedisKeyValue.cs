@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Blitz.Redis.Library.Tests.Models
+namespace Tests.Models
 {
     [ExcludeFromCodeCoverage]
     public class FakeRedisKeyValue

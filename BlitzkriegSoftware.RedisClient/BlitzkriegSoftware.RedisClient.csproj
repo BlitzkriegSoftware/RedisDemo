@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>9.0</LangVersion>
+		<Copyright>Copyright © 2020-2023 Stuart Williams/Blitzkrieg Software</Copyright>
+		<Company>Blitzkrieg Software/Stuart Williams</Company>
+		<Description>Demo using REDIS</Description>
+		<InformationalVersion>6.0.0</InformationalVersion>
+		<PackageIconUrl />
+		<RepositoryType>GIT</RepositoryType>
+		<RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
+		<PackageTags>BlitzkriegSoftware.Redis.Library</PackageTags>
+		<AssemblyName>BlitzkriegSoftware.RedisClient</AssemblyName>
+		<Version>6.0.0</Version>
+		<PackageReleaseNotes>
+			6.0.0 - Updates and Refactors
+			1.3.0 - Updated to have clear messages
+		</PackageReleaseNotes>
+		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
+		<IsPublishable>True</IsPublishable>
+		<Nullable>disable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Handy REDIS Client on StackExchange</Title>
+		<PackageProjectUrl>https://github.com/BlitzkriegSoftware/RedisDemo</PackageProjectUrl>
+		<PackageIcon>blizkrieglogo300.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<AnalysisLevel>6.0-recommended</AnalysisLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>.\BlitzkriegSoftware.RedisClient.xml</DocumentationFile>
+		<WarningLevel>5</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<WarningLevel>5</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="BlitzkriegSoftware.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="StackExchange.Redis" Version="2.6.86" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Properties\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Include="..\BlitzkriegSoftware.ico">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\blizkrieglogo300.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

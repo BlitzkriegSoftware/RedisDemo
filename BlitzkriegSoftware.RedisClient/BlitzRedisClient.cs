@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using StackExchange.Redis;
-using Newtonsoft.Json;
-using System.Diagnostics.CodeAnalysis;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
-// See: https://stackexchange.github.io/StackExchange.Redis/Basics
-
-namespace Blitz.Redis.Library
+namespace BlitzkriegSoftware.RedisClient
 {
     /// <summary>
     /// Client: Blitzkrieg Software Redis
+    /// <para>Avoid recreating connection multiplexers by instancing this as a singleton</para>
+    /// <para>See: <![CDATA[https://stackexchange.github.io/StackExchange.Redis/Basics]]></para>
     /// </summary>
-    public class BlitzRedisClient
+    public class BlitzRedisClient : IDisposable
     {
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Blitz.Redis.Library
 
         private readonly Models.RedisConfiguration _config;
 
-        private readonly ConnectionMultiplexer _redisConnectMultiplexer;
+        private ConnectionMultiplexer _redisConnectMultiplexer;
 
         [ExcludeFromCodeCoverage]
         private BlitzRedisClient() { }
@@ -185,14 +185,14 @@ namespace Blitz.Redis.Library
         /// <param name="keyMatchExpression">Simple RegEx</param>
         /// <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         /// <returns>Key Value List</returns>
-        public List<KeyValuePair<string,string>> MatchedKeyValues(string keyMatchExpression, int dbIndex = RedisDefaultDb)
+        public List<KeyValuePair<string, string>> MatchedKeyValues(string keyMatchExpression, int dbIndex = RedisDefaultDb)
         {
             var d = new List<KeyValuePair<string, string>>();
             IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
-            var matches = MatchedKeys(keyMatchExpression, dbIndex);
+            var matches = this.MatchedKeys(keyMatchExpression, dbIndex);
             if ((matches != null) && (matches.Length > 0))
             {
-                foreach(var key in matches)
+                foreach (var key in matches)
                 {
                     var value = db.StringGet(key);
                     d.Add(new KeyValuePair<string, string>(key, value));
@@ -234,7 +234,7 @@ namespace Blitz.Redis.Library
         public long ClearMatching(string keyMatchExpression, int dbIndex = RedisDefaultDb)
         {
             long deleted = 0;
-            var matches = MatchedKeys(keyMatchExpression, dbIndex);
+            var matches = this.MatchedKeys(keyMatchExpression, dbIndex);
             if ((matches != null) && (matches.Length > 0))
             {
                 IDatabase db = this._redisConnectMultiplexer.GetDatabase(dbIndex);
@@ -253,6 +253,48 @@ namespace Blitz.Redis.Library
                 return this._config;
             }
         }
+
+        /// <summary>
+        /// Multiplexer
+        /// </summary>
+        public ConnectionMultiplexer Multiplexer
+        {
+            get
+            {
+                return this._redisConnectMultiplexer;
+            }
+        }
+
+        #region "IDisposable"
+
+        private bool disposed; // to detect redundant calls
+
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    this._redisConnectMultiplexer?.Dispose();
+                    this._redisConnectMultiplexer = null;
+                }
+                this.disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
 
     }
 }

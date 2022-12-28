@@ -1,31 +1,33 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Blitz.Redis.Library</name>
+        <name>BlitzkriegSoftware.RedisClient</name>
     </assembly>
     <members>
-        <member name="T:Blitz.Redis.Library.BlitzRedisClient">
+        <member name="T:BlitzkriegSoftware.RedisClient.BlitzRedisClient">
             <summary>
             Client: Blitzkrieg Software Redis
+            <para>Avoid recreating connection multiplexers by instancing this as a singleton</para>
+            <para>See: <![CDATA[https://stackexchange.github.io/StackExchange.Redis/Basics]]></para>
             </summary>
         </member>
-        <member name="F:Blitz.Redis.Library.BlitzRedisClient.RedisDefaultDb">
+        <member name="F:BlitzkriegSoftware.RedisClient.BlitzRedisClient.RedisDefaultDb">
             <summary>
             Default: REDIS DB (-1)
             </summary>
         </member>
-        <member name="F:Blitz.Redis.Library.BlitzRedisClient.RedisDefaultServer">
+        <member name="F:BlitzkriegSoftware.RedisClient.BlitzRedisClient.RedisDefaultServer">
             <summary>
             Default: REDIS Server (0)
             </summary>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.#ctor(Blitz.Redis.Library.Models.RedisConfiguration)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.#ctor(BlitzkriegSoftware.RedisClient.Models.RedisConfiguration)">
             <summary>
             CTOR
             </summary>
             <param name="config">RedisConfiguration</param>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Set(System.String,System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Set(System.String,System.String,System.Int32)">
             <summary>
             Store a value
             </summary>
@@ -33,7 +35,7 @@
             <param name="value">value</param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Set``1(System.String,``0,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Set``1(System.String,``0,System.Int32)">
             <summary>
             Store
             </summary>
@@ -42,7 +44,7 @@
             <param name="thing">of T</param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Get(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Get(System.String,System.Int32)">
             <summary>
             Get
             </summary>
@@ -50,7 +52,7 @@
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>value</returns>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Get``1(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Get``1(System.String,System.Int32)">
             <summary>
             Get
             </summary>
@@ -59,14 +61,14 @@
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>instance of T</returns>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.Delete(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Delete(System.String,System.Int32)">
             <summary>
             Delete a key/value, ignores not found
             </summary>
             <param name="key">key</param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.ClearAll(System.Int32,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.ClearAll(System.Int32,System.Int32)">
             <summary>
             Clear All Keys
             <para>Warning! Use carefully</para>
@@ -74,7 +76,7 @@
             <param name="serverIndex">(optional) Server Index, default <c>RedisDefaultServer</c></param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.MatchedKeys(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.MatchedKeys(System.String,System.Int32)">
             <summary>
             Get all matching keys
             <para>
@@ -106,7 +108,7 @@
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>List or empty</returns>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.MatchedKeyValues(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.MatchedKeyValues(System.String,System.Int32)">
             <summary>
             Fetch a list of Key/Value Pairs that match
             <para>
@@ -138,7 +140,7 @@
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>Key Value List</returns>
         </member>
-        <member name="M:Blitz.Redis.Library.BlitzRedisClient.ClearMatching(System.String,System.Int32)">
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.ClearMatching(System.String,System.Int32)">
             <summary>
             Delete keys based on a key regex expression (case sensitive) or you can pass a literal string
             <para>
@@ -170,39 +172,55 @@
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>Count of deleted keys</returns>
         </member>
-        <member name="P:Blitz.Redis.Library.BlitzRedisClient.Config">
+        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Config">
             <summary>
             Redis Configuration
             </summary>
         </member>
-        <member name="T:Blitz.Redis.Library.Models.RedisConfiguration">
+        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Multiplexer">
+            <summary>
+            Multiplexer
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration">
             <summary>
             REDIS Coniguration
             </summary>
         </member>
-        <member name="F:Blitz.Redis.Library.Models.RedisConfiguration.RedisLocalHostDefault">
+        <member name="F:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration.RedisLocalHostDefault">
             <summary>
             Default: 127.0.0.1:6379 (admin)
             </summary>
         </member>
-        <member name="P:Blitz.Redis.Library.Models.RedisConfiguration.ConnectionString">
+        <member name="P:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration.ConnectionString">
             <summary>
             Connection String
             </summary>
         </member>
-        <member name="P:Blitz.Redis.Library.Models.RedisConfiguration.IsValid">
+        <member name="P:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration.IsValid">
             <summary>
             Is connection configuration valid
             </summary>
         </member>
-        <member name="M:Blitz.Redis.Library.Models.RedisConfiguration.SetProperty(System.String,System.String)">
+        <member name="M:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration.SetProperty(System.String,System.String)">
             <summary>
             From a config key/value pair set the correct property
             </summary>
             <param name="key">(sic)</param>
             <param name="value">(sic)</param>
         </member>
-        <member name="M:Blitz.Redis.Library.Models.RedisConfiguration.ToString">
+        <member name="M:BlitzkriegSoftware.RedisClient.Models.RedisConfiguration.ToString">
             <summary>
             Debug String
             </summary>

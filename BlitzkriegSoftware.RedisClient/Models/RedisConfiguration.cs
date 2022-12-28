@@ -1,4 +1,4 @@
-﻿namespace Blitz.Redis.Library.Models
+﻿namespace BlitzkriegSoftware.RedisClient.Models
 {
     /// <summary>
     /// REDIS Coniguration

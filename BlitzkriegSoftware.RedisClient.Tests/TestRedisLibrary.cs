@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Blitz.Redis.Library.Tests
+using BlitzkriegSoftware.RedisClient;
+using BlitzkriegSoftware.RedisClient.Models;
+
+namespace Tests
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -41,21 +44,21 @@ namespace Blitz.Redis.Library.Tests
         [TestCategory("Unit")]
         public void ConfigTest()
         {
-            var c = new Library.Models.RedisConfiguration();
+            var c = new RedisConfiguration();
             Assert.IsTrue(c.IsValid);
             var s = c.ConnectionString;
             Assert.IsFalse(string.IsNullOrWhiteSpace(s));
             var t = c.ToString();
             Assert.IsFalse(string.IsNullOrWhiteSpace(t));
-            c.ConnectionString = Library.Models.RedisConfiguration.RedisLocalHostDefault;
-            c.SetProperty("redis-connection", Library.Models.RedisConfiguration.RedisLocalHostDefault);
+            c.ConnectionString = RedisConfiguration.RedisLocalHostDefault;
+            c.SetProperty("redis-connection", RedisConfiguration.RedisLocalHostDefault);
         }
 
         [TestMethod]
         [TestCategory("Unit")]
         public void BadPropSet()
         {
-            var c = new Library.Models.RedisConfiguration();
+            var c = new RedisConfiguration();
             var cs = c.ConnectionString;
             Assert.IsFalse(string.IsNullOrWhiteSpace(cs));
             TestRedisLibrary.testContext.WriteLine($"{c}");
@@ -67,8 +70,8 @@ namespace Blitz.Redis.Library.Tests
         [TestCategory("Integration")]
         public void TestSimpleString()
         {
-            var redisConfig = new Blitz.Redis.Library.Models.RedisConfiguration();
-            var client = new Blitz.Redis.Library.BlitzRedisClient(redisConfig);
+            var redisConfig = new RedisConfiguration();
+            var client = new BlitzRedisClient(redisConfig);
 
             var cfg = client.Config;
             Assert.IsFalse(string.IsNullOrWhiteSpace(cfg.ConnectionString));
@@ -87,15 +90,15 @@ namespace Blitz.Redis.Library.Tests
         [ExpectedException(typeof(System.ArgumentNullException))]
         public void BadClient()
         {
-            var client = new Blitz.Redis.Library.BlitzRedisClient(null);
+            _ = new BlitzRedisClient(null);
         }
 
         [TestMethod]
         [TestCategory("Integration")]
         public void TestTypeT()
         {
-            var redisConfig = new Blitz.Redis.Library.Models.RedisConfiguration();
-            var client = new Blitz.Redis.Library.BlitzRedisClient(redisConfig);
+            var redisConfig = new RedisConfiguration();
+            var client = new BlitzRedisClient(redisConfig);
 
             var m = this.MakeKeyValue(2);
 
@@ -110,8 +113,8 @@ namespace Blitz.Redis.Library.Tests
         [TestCategory("Integration")]
         public void TestDelete()
         {
-            var redisConfig = new Blitz.Redis.Library.Models.RedisConfiguration();
-            var client = new Blitz.Redis.Library.BlitzRedisClient(redisConfig);
+            var redisConfig = new RedisConfiguration();
+            var client = new BlitzRedisClient(redisConfig);
             var m = this.MakeKeyValue(2);
             client.Set<Models.FakeRedisKeyValue>(m.Key, m);
             var deleted = client.Delete(m.Key);
@@ -122,8 +125,8 @@ namespace Blitz.Redis.Library.Tests
         [TestCategory("Integration")]
         public void ComplexTest()
         {
-            var redisConfig = new Blitz.Redis.Library.Models.RedisConfiguration();
-            var client = new Blitz.Redis.Library.BlitzRedisClient(redisConfig);
+            var redisConfig = new RedisConfiguration();
+            var client = new BlitzRedisClient(redisConfig);
 
             client.ClearAll();
 
@@ -161,5 +164,27 @@ namespace Blitz.Redis.Library.Tests
             Assert.AreEqual(2, deleted);
         }
 
+
+        [TestMethod]
+        public void NullTest()
+        {
+            var redisConfig = new RedisConfiguration();
+            var client = new BlitzRedisClient(redisConfig);
+
+            var actual = client.Multiplexer;
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void DisposeTest() {
+            var redisConfig = new RedisConfiguration();
+#pragma warning disable IDE0063 // Use simple 'using' statement
+            using (var client = new BlitzRedisClient(redisConfig))
+            {
+                client.Dispose();
+            }
+#pragma warning restore IDE0063 // Use simple 'using' statement
+
+        }
     }
 }

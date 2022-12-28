@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Blitz.Redis.Demo": {
-      "commandName": "Project",
-      "commandLineArgs": "-m 9 -c \"127.0.0.1:6379\" -v"
-    }
-  }
-}
