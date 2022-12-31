@@ -4,7 +4,30 @@
 		<TargetFramework>Net6.0</TargetFramework>
 		<LangVersion>9.0</LangVersion>
 		<IsPackable>false</IsPackable>
+		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
+		<IsPublishable>False</IsPublishable>
+		<Nullable>disable</Nullable>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <WarningLevel>5</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <WarningLevel>5</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="BlitzkriegSoftware.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Faker.Data" Version="2.0.1" />

@@ -14,6 +14,8 @@ namespace BlitzkriegSoftware.RedisClient
     public class BlitzRedisClient : IDisposable
     {
 
+        #region "Vars, Constants"
+
         /// <summary>
         /// Default: REDIS DB (-1)
         /// </summary>
@@ -28,6 +30,10 @@ namespace BlitzkriegSoftware.RedisClient
 
         private ConnectionMultiplexer _redisConnectMultiplexer;
 
+        #endregion
+
+        #region "CTOR"
+
         [ExcludeFromCodeCoverage]
         private BlitzRedisClient() { }
 
@@ -41,8 +47,36 @@ namespace BlitzkriegSoftware.RedisClient
             this._redisConnectMultiplexer = ConnectionMultiplexer.Connect($"{this._config.ConnectionString}");
         }
 
+        #endregion
+
+        #region "Properties"
+
         /// <summary>
-        /// Store a value
+        /// Redis Configuration
+        /// </summary>
+        public Models.RedisConfiguration Config
+        {
+            get
+            {
+                return this._config;
+            }
+        }
+
+        /// <summary>
+        /// Multiplexer
+        /// </summary>
+        public ConnectionMultiplexer Multiplexer
+        {
+            get
+            {
+                return this._redisConnectMultiplexer;
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Set a Key/Value
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="value">value</param>
@@ -54,7 +88,7 @@ namespace BlitzkriegSoftware.RedisClient
         }
 
         /// <summary>
-        /// Store
+        /// Set a Key/Value
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="key">key</param>
@@ -241,28 +275,6 @@ namespace BlitzkriegSoftware.RedisClient
                 deleted = db.KeyDelete(matches);
             }
             return deleted;
-        }
-
-        /// <summary>
-        /// Redis Configuration
-        /// </summary>
-        public Models.RedisConfiguration Config
-        {
-            get
-            {
-                return this._config;
-            }
-        }
-
-        /// <summary>
-        /// Multiplexer
-        /// </summary>
-        public ConnectionMultiplexer Multiplexer
-        {
-            get
-            {
-                return this._redisConnectMultiplexer;
-            }
         }
 
         #region "IDisposable"

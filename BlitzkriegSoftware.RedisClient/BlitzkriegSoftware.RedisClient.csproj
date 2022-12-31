@@ -6,14 +6,15 @@
 		<Copyright>Copyright © 2020-2023 Stuart Williams/Blitzkrieg Software</Copyright>
 		<Company>Blitzkrieg Software/Stuart Williams</Company>
 		<Description>Demo using REDIS</Description>
-		<InformationalVersion>6.0.0</InformationalVersion>
 		<PackageIconUrl />
 		<RepositoryType>GIT</RepositoryType>
 		<RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
 		<PackageTags>BlitzkriegSoftware.Redis.Library</PackageTags>
 		<AssemblyName>BlitzkriegSoftware.RedisClient</AssemblyName>
-		<Version>6.0.0</Version>
+		<InformationalVersion>6.0.1</InformationalVersion>
+		<Version>6.0.1</Version>
 		<PackageReleaseNotes>
+			6.0.1 - More documentation
 			6.0.0 - Updates and Refactors
 			1.3.0 - Updated to have clear messages
 		</PackageReleaseNotes>
@@ -42,6 +43,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Properties\**" />
+	  <EmbeddedResource Remove="Properties\**" />
+	  <None Remove="Properties\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="BlitzkriegSoftware.ico" />
 	</ItemGroup>
 
@@ -50,10 +57,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 		<PackageReference Include="StackExchange.Redis" Version="2.6.86" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\" />
 	</ItemGroup>
 
 

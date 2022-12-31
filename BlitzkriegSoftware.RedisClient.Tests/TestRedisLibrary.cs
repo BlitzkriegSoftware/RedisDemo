@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BlitzkriegSoftware.RedisClient;
 using BlitzkriegSoftware.RedisClient.Models;
 
-namespace Tests
+namespace BlitzkriegSoftware.RedisClient.Tests
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -25,9 +25,9 @@ namespace Tests
 
         #region "Helpers"
 
-        private Models.FakeRedisKeyValue MakeKeyValue(int index)
+        private Tests.Models.FakeRedisKeyValue MakeKeyValue(int index)
         {
-            var model =  new Models.FakeRedisKeyValue()
+            var model =  new Tests.Models.FakeRedisKeyValue()
             {
                 Key = index.ToString(),
                 Value = Faker.Lorem.Sentence()
@@ -38,13 +38,11 @@ namespace Tests
 
         #endregion
 
-
-
         [TestMethod]
         [TestCategory("Unit")]
         public void ConfigTest()
         {
-            var c = new RedisConfiguration();
+            var c = new BlitzkriegSoftware.RedisClient.Models.RedisConfiguration();
             Assert.IsTrue(c.IsValid);
             var s = c.ConnectionString;
             Assert.IsFalse(string.IsNullOrWhiteSpace(s));
