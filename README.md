@@ -1,39 +1,40 @@
 # RedisDemo
-A demo of using *REDIS* from C# in .NET 
+A demo of using *REDIS*/*VALKEY* from C# in .NET 
 
 ## Prerequisites
 
 1. Install Docker or your favorite container engine
 2. Start Docker
-3. Start REDIS in your docker container
+3. Start REDIS or Valkey in your docker container
 
-### Start REDIS
-
-```bash
-./scripts/docker_redis_start.sh
-```
-
--or-
+### Start REDIS or VALKEY
 
 ```powershell
 .\scripts\docker_redis_start.ps1
 ```
 
-### Stop REDIS
+-or-
 
-```bash
-./scripts/docker_redis_stop.sh
+```powershell
+.\scripts\valkey_start.ps1
 ```
 
--or-
+### Stop REDIS
 
 ```powershell
 .\scripts\docker_redis_stop.ps1
 ```
 
-## Docker REDIS Connection String
+-or-
 
-Your REDIS container instance will have the following connection string:
+```powershell
+.\scripts\valkey_stop.ps1
+```
+
+
+## Docker Connection String
+
+Your REDIS/VALKEY container instance will have the following connection string:
 
 ```text
 127.0.0.1:6379

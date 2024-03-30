@@ -3,18 +3,19 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>9.0</LangVersion>
-		<Copyright>Copyright © 2020-2023 Stuart Williams/Blitzkrieg Software</Copyright>
+		<Copyright>Copyright © 2020-2024 Stuart Williams/Blitzkrieg Software</Copyright>
 		<Company>Blitzkrieg Software/Stuart Williams</Company>
-		<Description>Demo using REDIS</Description>
+		<Description>Demo using REDIS or VALKEY</Description>
 		<PackageIconUrl />
 		<RepositoryType>GIT</RepositoryType>
 		<RepositoryUrl>https://github.com/BlitzkriegSoftware/RedisDemo</RepositoryUrl>
 		<PackageTags>BlitzkriegSoftware.Redis.Library</PackageTags>
 		<AssemblyName>BlitzkriegSoftware.RedisClient</AssemblyName>
-		<InformationalVersion>6.0.1</InformationalVersion>
-		<Version>6.0.1</Version>
+		<InformationalVersion>6.1.0</InformationalVersion>
+		<Version>6.1.0</Version>
 		<PackageReleaseNotes>
-			6.0.1 - More documentation
+			6.1.x - VALKEY Support
+			6.0.x - More documentation
 			6.0.0 - Updates and Refactors
 			1.3.0 - Updated to have clear messages
 		</PackageReleaseNotes>

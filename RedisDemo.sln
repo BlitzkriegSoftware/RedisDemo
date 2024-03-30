@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1380
 		scripts\docker_redis_start.sh = scripts\docker_redis_start.sh
 		scripts\docker_redis_stop.ps1 = scripts\docker_redis_stop.ps1
 		scripts\docker_redis_stop.sh = scripts\docker_redis_stop.sh
+		scripts\valkey_start.ps1 = scripts\valkey_start.ps1
+		scripts\valkey_stop.ps1 = scripts\valkey_stop.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlitzkriegSoftware.RedisClient", "BlitzkriegSoftware.RedisClient\BlitzkriegSoftware.RedisClient.csproj", "{D5A1F579-E567-4946-8F24-5C17E2B498E1}"

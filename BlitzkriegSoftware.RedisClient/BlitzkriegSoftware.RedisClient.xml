@@ -27,9 +27,19 @@
             </summary>
             <param name="config">RedisConfiguration</param>
         </member>
+        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Config">
+            <summary>
+            Redis Configuration
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Multiplexer">
+            <summary>
+            Multiplexer
+            </summary>
+        </member>
         <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Set(System.String,System.String,System.Int32)">
             <summary>
-            Store a value
+            Set a Key/Value
             </summary>
             <param name="key">key</param>
             <param name="value">value</param>
@@ -37,7 +47,7 @@
         </member>
         <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Set``1(System.String,``0,System.Int32)">
             <summary>
-            Store
+            Set a Key/Value
             </summary>
             <typeparam name="T">Type</typeparam>
             <param name="key">key</param>
@@ -171,16 +181,6 @@
             <param name="keyMatchExpression">Simple RegEx</param>
             <param name="dbIndex">(optional) index, default <c>RedisDefaultDb</c></param>
             <returns>Count of deleted keys</returns>
-        </member>
-        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Config">
-            <summary>
-            Redis Configuration
-            </summary>
-        </member>
-        <member name="P:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Multiplexer">
-            <summary>
-            Multiplexer
-            </summary>
         </member>
         <member name="M:BlitzkriegSoftware.RedisClient.BlitzRedisClient.Dispose(System.Boolean)">
             <summary>
